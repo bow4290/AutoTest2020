@@ -17,12 +17,26 @@ package frc.robot;
  */
 public final class Constants
 {
-
+    //PWM Ports.
     public final int leftVictorSPX1Channel = 1;
     public final int leftVictorSPX2Channel = 2;
     public final int leftVictorSPX3Channel = 3;
     public final int rightVictorSPX1Channel = 4;
     public final int rightVictorSPX2Channel = 5;
     public final int rightVictorSPX3Channel = 6;
+
+    //DIO Ports.
+    public final int leftEncoderChannelA = 0;
+    public final int leftEncoderChannelB = 1;
+    public final int rightEncoderChannelA = 2;
+    public final int rightEncoderChannelB = 3;
+
+    public final int leftEncoderAverageSamples = 5;
+    public final double leftEncoderMinRate = 1;
+    public final double leftEncoderPulseDistance = 1/360 * 2 * Math.PI * 1.5;
+    public final int rightEncoderAverageSamples = 5;
+    public final double rightEncoderMinRate = 1;
+    public final double rightEncoderPulseDistance = 1/360 * 2 * Math.PI * 1.5;
+
 
 }

@@ -17,9 +17,19 @@ public class AutoCommand extends CommandBase {
         this.subsystems = Set.of(driveTrainSubsystem);
     }
 
+    @Override
+    public void initialize() {
+        driveTrainSubsystem.leftEncoder.reset();
+        driveTrainSubsystem.rightEncoder.reset();
+    }
 
+    @Override
     public void execute() {
-
+        while(driveTrainSubsystem.leftEncoder.getDistance() < 50/*inches*/ || driveTrainSubsystem.rightEncoder.getDistance() < 50/*inches*/)
+        {
+            driveTrainSubsystem.drive(0.5, 0.5);
+        }
+        driveTrainSubsystem.drive(0, 0);
     }
 
     @Override
@@ -27,6 +37,8 @@ public class AutoCommand extends CommandBase {
         return true;
     }
 
+
+    @Override
     public void end(boolean interrupted) {
     }
 

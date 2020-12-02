@@ -4,8 +4,12 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import edu.wpi.first.wpilibj.CounterBase;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.commands.VictorSPXDriveCommand;
+import frc.robot.Constants;
+
+
 public class DriveTrainSubsystem extends SubsystemBase{
 
     private final VictorSPX leftVictorSPX1;
@@ -14,6 +18,9 @@ public class DriveTrainSubsystem extends SubsystemBase{
     private final VictorSPX rightVictorSPX1;
     private final VictorSPX rightVictorSPX2;
     private final VictorSPX rightVictorSPX3;
+    public final Encoder leftEncoder;
+    public final Encoder rightEncoder;
+    Constants constants = new Constants();
 
     public DriveTrainSubsystem (int leftVictorSPX1Channel, int leftVictorSPX2Channel, int leftVictorSPX3Channel, int rightVictorSPX1Channel, int rightVictorSPX2Channel, int rightVictorSPX3Channel){
 
@@ -23,8 +30,16 @@ public class DriveTrainSubsystem extends SubsystemBase{
         rightVictorSPX1 = new VictorSPX(rightVictorSPX1Channel);
         rightVictorSPX2 = new VictorSPX(rightVictorSPX2Channel);
         rightVictorSPX3 = new VictorSPX(rightVictorSPX3Channel);
+        leftEncoder = new Encoder(constants.leftEncoderChannelA, constants.leftEncoderChannelB, true, CounterBase.EncodingType.k4X);
+        leftEncoder.setSamplesToAverage(constants.leftEncoderAverageSamples);
+        leftEncoder.setMinRate(constants.leftEncoderMinRate);
+        leftEncoder.setDistancePerPulse(constants.leftEncoderPulseDistance);
+        rightEncoder = new Encoder(constants.rightEncoderChannelA, constants.rightEncoderChannelB, false, CounterBase.EncodingType.k4X);
+        rightEncoder.setSamplesToAverage(constants.rightEncoderAverageSamples);
+        rightEncoder.setMinRate(constants.rightEncoderMinRate);
+        rightEncoder.setDistancePerPulse(constants.rightEncoderPulseDistance);
 
-        setDefaultCommand(new VictorSPXDriveCommand());
+        //setDefaultCommand();
 
     }
 
@@ -40,9 +55,6 @@ public class DriveTrainSubsystem extends SubsystemBase{
         leftVictorSPX1.setInverted(true);
         leftVictorSPX2.setInverted(true);
         leftVictorSPX3.setInverted(true);
-        rightVictorSPX1.setInverted(true);
-        rightVictorSPX2.setInverted(true);
-        rightVictorSPX3.setInverted(true);
 
         leftVictorSPX1.set(VictorSPXControlMode.PercentOutput, leftspeed);
         leftVictorSPX2.set(VictorSPXControlMode.PercentOutput, leftspeed);
