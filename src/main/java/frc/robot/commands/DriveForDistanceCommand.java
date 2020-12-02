@@ -7,14 +7,16 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 
 import java.util.Set;
 
-public class AutoCommand extends CommandBase {
+public class DriveForDistanceCommand extends CommandBase {
 
     private DriveTrainSubsystem driveTrainSubsystem;
     private final Set<Subsystem> subsystems;
+    private double inchesToDrive = 0;
 
-    public AutoCommand(DriveTrainSubsystem driveTrainSubsystem) {
+    public DriveForDistanceCommand(DriveTrainSubsystem driveTrainSubsystem, double inchesToDrive) {
         this.driveTrainSubsystem = driveTrainSubsystem;
         this.subsystems = Set.of(driveTrainSubsystem);
+        this.inchesToDrive = inchesToDrive;
     }
 
     @Override
@@ -25,7 +27,7 @@ public class AutoCommand extends CommandBase {
 
     @Override
     public void execute() {
-        while(driveTrainSubsystem.leftEncoder.getDistance() < 50/*inches*/ || driveTrainSubsystem.rightEncoder.getDistance() < 50/*inches*/)
+        while(driveTrainSubsystem.leftEncoder.getDistance() < inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() < inchesToDrive)
         {
             driveTrainSubsystem.drive(0.5, 0.5);
         }

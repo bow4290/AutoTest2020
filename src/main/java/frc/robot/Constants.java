@@ -38,5 +38,8 @@ public final class Constants
     public final double rightEncoderMinRate = 1;
     public final double rightEncoderPulseDistance = 1/360 * 2 * Math.PI * 1.5;
 
+    //Auto Command Inputs.
+    public final double inchesToDriveForDriveForDistanceCommand1 = 50;
+
 
 }

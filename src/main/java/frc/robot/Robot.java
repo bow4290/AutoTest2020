@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.AutoCommand;
+import frc.robot.commands.DriveForDistanceCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
 /**
@@ -27,6 +27,7 @@ public class Robot extends TimedRobot
 
     private RobotContainer robotContainer;
     private DriveTrainSubsystem driveTrainSubsystem;
+    Constants constants = new Constants();
 
     /**
      * This method is run when the robot is first started up and should be used for any
@@ -35,7 +36,6 @@ public class Robot extends TimedRobot
     @Override
     public void robotInit()
     {
-        Constants constants = new Constants();
         robotContainer = new RobotContainer();
         driveTrainSubsystem = new DriveTrainSubsystem(constants.leftVictorSPX1Channel, constants.leftVictorSPX2Channel, constants.leftVictorSPX3Channel, constants.rightVictorSPX1Channel, constants.rightVictorSPX2Channel, constants.rightVictorSPX3Channel);
     }
@@ -78,7 +78,7 @@ public class Robot extends TimedRobot
     @Override
     public void autonomousInit()
     {
-        AutoCommand autonomousCommand = new AutoCommand(driveTrainSubsystem);
+        DriveForDistanceCommand driveForDistanceCommand1 = new DriveForDistanceCommand(driveTrainSubsystem, constants.inchesToDriveForDriveForDistanceCommand1);
 
         // schedule the autonomous command (example)
         if (autonomousCommand != null)
