@@ -17,13 +17,12 @@ package frc.robot;
  */
 public final class Constants
 {
+    //Robot characteristics
+    private final double wheelDiameter = 7;
+
     //PWM Ports.
-    public final int leftVictorSPX1Channel = 1;
-    public final int leftVictorSPX2Channel = 2;
-    public final int leftVictorSPX3Channel = 3;
-    public final int rightVictorSPX1Channel = 4;
-    public final int rightVictorSPX2Channel = 5;
-    public final int rightVictorSPX3Channel = 6;
+    public final int leftSparkChannel = 0;
+    public final int rightSparkChannel = 1;
 
     //DIO Ports.
     public final int leftEncoderChannelA = 0;
@@ -33,10 +32,10 @@ public final class Constants
 
     public final int leftEncoderAverageSamples = 5;
     public final double leftEncoderMinRate = 1;
-    public final double leftEncoderPulseDistance = 1/360 * 2 * Math.PI * 1.5;
+    public final double leftEncoderPulseDistance = 1/4096 * Math.PI * wheelDiameter;
     public final int rightEncoderAverageSamples = 5;
     public final double rightEncoderMinRate = 1;
-    public final double rightEncoderPulseDistance = 1/360 * 2 * Math.PI * 1.5;
+    public final double rightEncoderPulseDistance = 1/4096 * Math.PI * wheelDiameter;
 
     //Auto Command Inputs.
     public final double inchesToDriveForDriveForDistanceCommand1 = 50;

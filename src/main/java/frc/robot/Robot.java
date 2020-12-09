@@ -36,8 +36,9 @@ public class Robot extends TimedRobot
     @Override
     public void robotInit()
     {
+        autonomousCommand = new DriveForDistanceCommand(driveTrainSubsystem, constants.inchesToDriveForDriveForDistanceCommand1);
         robotContainer = new RobotContainer();
-        driveTrainSubsystem = new DriveTrainSubsystem(constants.leftVictorSPX1Channel, constants.leftVictorSPX2Channel, constants.leftVictorSPX3Channel, constants.rightVictorSPX1Channel, constants.rightVictorSPX2Channel, constants.rightVictorSPX3Channel);
+        driveTrainSubsystem = new DriveTrainSubsystem(constants.leftSparkChannel, constants.rightSparkChannel);
     }
 
     /**
@@ -78,7 +79,6 @@ public class Robot extends TimedRobot
     @Override
     public void autonomousInit()
     {
-        DriveForDistanceCommand driveForDistanceCommand1 = new DriveForDistanceCommand(driveTrainSubsystem, constants.inchesToDriveForDriveForDistanceCommand1);
 
         // schedule the autonomous command (example)
         if (autonomousCommand != null)

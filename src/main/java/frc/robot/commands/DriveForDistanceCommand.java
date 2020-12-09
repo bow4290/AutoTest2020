@@ -11,7 +11,7 @@ public class DriveForDistanceCommand extends CommandBase {
 
     private DriveTrainSubsystem driveTrainSubsystem;
     private final Set<Subsystem> subsystems;
-    private double inchesToDrive = 0;
+    private double inchesToDrive;
 
     public DriveForDistanceCommand(DriveTrainSubsystem driveTrainSubsystem, double inchesToDrive) {
         this.driveTrainSubsystem = driveTrainSubsystem;
@@ -27,11 +27,9 @@ public class DriveForDistanceCommand extends CommandBase {
 
     @Override
     public void execute() {
-        while(driveTrainSubsystem.leftEncoder.getDistance() < inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() < inchesToDrive)
-        {
+        while(driveTrainSubsystem.leftEncoder.getDistance() < inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() < inchesToDrive) {
             driveTrainSubsystem.drive(0.5, 0.5);
         }
-        driveTrainSubsystem.drive(0, 0);
     }
 
     @Override
@@ -42,6 +40,6 @@ public class DriveForDistanceCommand extends CommandBase {
 
     @Override
     public void end(boolean interrupted) {
+        driveTrainSubsystem.drive(0, 0);
     }
-
 }
