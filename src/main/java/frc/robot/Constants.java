@@ -32,10 +32,10 @@ public final class Constants
 
     public final int leftEncoderAverageSamples = 5;
     public final double leftEncoderMinRate = 1;
-    public final double leftEncoderPulseDistance = 1/4096 * Math.PI * wheelDiameter;
+    public final double leftEncoderPulseDistance = 1.0/4096 * Math.PI * wheelDiameter;
     public final int rightEncoderAverageSamples = 5;
     public final double rightEncoderMinRate = 1;
-    public final double rightEncoderPulseDistance = 1/4096 * Math.PI * wheelDiameter;
+    public final double rightEncoderPulseDistance = 1.0/4096 * Math.PI * wheelDiameter;
 
     //Auto Command Inputs.
     public final double inchesToDriveForDriveForDistanceCommand1 = 50;
