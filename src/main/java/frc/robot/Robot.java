@@ -36,9 +36,9 @@ public class Robot extends TimedRobot
     @Override
     public void robotInit()
     {
-        autonomousCommand = new DriveForDistanceCommand(driveTrainSubsystem, constants.inchesToDriveForDriveForDistanceCommand1);
         robotContainer = new RobotContainer();
         driveTrainSubsystem = new DriveTrainSubsystem(constants.leftSparkChannel, constants.rightSparkChannel);
+        autonomousCommand = new DriveForDistanceCommand(driveTrainSubsystem, constants.inchesToDriveForDriveForDistanceCommand1);
     }
 
     /**
@@ -73,13 +73,12 @@ public class Robot extends TimedRobot
     {
     }
 
-    /**
+    /*
      * This autonomous runs the autonomous command selected by your {@link RobotContainer} class.
      */
     @Override
     public void autonomousInit()
     {
-
         // schedule the autonomous command (example)
         if (autonomousCommand != null)
         {

@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class DriveForDistanceCommand extends CommandBase {
 
-    private DriveTrainSubsystem driveTrainSubsystem;
+    private final DriveTrainSubsystem driveTrainSubsystem;
     //private final Set<Subsystem> subsystems;
     private double inchesToDrive;
 
@@ -28,7 +28,7 @@ public class DriveForDistanceCommand extends CommandBase {
     @Override
     public void execute() {
         while(driveTrainSubsystem.leftEncoder.getDistance() < inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() < inchesToDrive) {
-            driveTrainSubsystem.drive(0.5, 0.5);
+            driveTrainSubsystem.drive(-0.4, -0.4);
         }
     }
 
@@ -41,5 +41,6 @@ public class DriveForDistanceCommand extends CommandBase {
     @Override
     public void end(boolean interrupted) {
         driveTrainSubsystem.drive(0, 0);
+        System.out.println("Done with auto command.");
     }
 }
