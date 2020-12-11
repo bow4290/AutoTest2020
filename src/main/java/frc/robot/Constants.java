@@ -7,29 +7,22 @@
 
 package frc.robot;
 
-/**
- * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
- * constants.  This class should not be used for any other purpose.  All constants should be
- * declared globally (i.e. public static).  Do not put anything functional in this class.
- * <p>
- * It is advised to statically import this class (or one of its inner classes) wherever the
- * constants are needed, to reduce verbosity.
- */
 public final class Constants
 {
-    //Robot characteristics
+    // Robot characteristics
     private final double wheelDiameter = 7;
 
-    //PWM Ports.
+    // PWM Ports.
     public final int leftSparkChannel = 0;
     public final int rightSparkChannel = 1;
 
-    //DIO Ports.
+    // DIO Ports.
     public final int leftEncoderChannelA = 0;
     public final int leftEncoderChannelB = 1;
     public final int rightEncoderChannelA = 2;
     public final int rightEncoderChannelB = 3;
 
+    // Encoder Stuff
     public final int leftEncoderAverageSamples = 5;
     public final double leftEncoderMinRate = 1;
     public final double leftEncoderPulseDistance = 1.0/7400 * Math.PI * wheelDiameter;
@@ -37,7 +30,7 @@ public final class Constants
     public final double rightEncoderMinRate = 1;
     public final double rightEncoderPulseDistance = 1.0/7400 * Math.PI * wheelDiameter;
 
-    //Auto Command Inputs.
+    // Auto Command Inputs
     public final double inchesToDriveForDriveForDistanceCommand1 = 50;
 
 
