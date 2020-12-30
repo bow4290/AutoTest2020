@@ -12,11 +12,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.DriveForDistanceCommand;
+import frc.robot.commands.ManualDriveCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
 public class Robot extends TimedRobot
 {
     private Command autonomousCommand;
+    private Command teleopCommand;
     private RobotContainer robotContainer;
     private DriveTrainSubsystem driveTrainSubsystem;
     
@@ -28,6 +30,7 @@ public class Robot extends TimedRobot
         robotContainer = new RobotContainer();
         driveTrainSubsystem = new DriveTrainSubsystem(constants.leftSparkChannel, constants.rightSparkChannel);
         autonomousCommand = new DriveForDistanceCommand(driveTrainSubsystem, constants.inchesToDriveForDriveForDistanceCommand1);
+        teleopCommand = new ManualDriveCommand(driveTrainSubsystem);
     }
 
     @Override
@@ -76,6 +79,7 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic()
     {
+        teleopCommand.schedule();
     }
 
     @Override

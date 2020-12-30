@@ -33,5 +33,8 @@ public final class Constants
     // Auto Command Inputs
     public final double inchesToDriveForDriveForDistanceCommand1 = 50;
 
+    //USB Ports
+    public final int leftJoystickPort = 0;
+    public final int rightJoystickPort = 1;
 
 }

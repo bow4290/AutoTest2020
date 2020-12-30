@@ -21,12 +21,12 @@ import frc.robot.subsystems.ExampleSubsystem;
  */
 public class RobotContainer
 {
+    Constants constants = new Constants();
     // The robot's subsystems and commands are defined here...
     private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 
     public static Joystick joystickLeft;
     public static Joystick joystickRight;
-    public static XboxController xboxController;
 
 
     /**
@@ -34,6 +34,8 @@ public class RobotContainer
      */
     public RobotContainer()
     {
+        joystickLeft = new Joystick(constants.leftJoystickPort);
+        joystickRight = new Joystick(constants.rightJoystickPort);
         // Configure the button bindings
         configureButtonBindings();
     }

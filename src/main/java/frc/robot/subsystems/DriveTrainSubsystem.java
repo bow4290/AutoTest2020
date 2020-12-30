@@ -5,6 +5,7 @@ package frc.robot.subsystems;
 //import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 //import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.CounterBase;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
