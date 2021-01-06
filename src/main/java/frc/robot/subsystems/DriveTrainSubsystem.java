@@ -4,10 +4,7 @@ package frc.robot.subsystems;
 
 //import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 //import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import edu.wpi.first.wpilibj.CounterBase;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -25,8 +22,10 @@ public class DriveTrainSubsystem extends SubsystemBase{
     public  Encoder leftEncoder;
     public  Encoder rightEncoder;
     Constants constants = new Constants();
+    private final DoubleSolenoid gearShiftSolenoid;
+    public DoubleSolenoid.Value shiftStatus;
 
-    public DriveTrainSubsystem (int leftSparkChannel, int rightSparkChannel){
+    public DriveTrainSubsystem (int leftSparkChannel, int rightSparkChannel, int inputGearShiftForwardChannel, int inputGearShiftReverseChannel){
 
         /*leftVictorSPX1 = new VictorSPX(leftVictorSPX1Channel);
         leftVictorSPX2 = new VictorSPX(leftVictorSPX2Channel);
@@ -46,6 +45,9 @@ public class DriveTrainSubsystem extends SubsystemBase{
         rightEncoder.setSamplesToAverage(constants.rightEncoderAverageSamples);
         rightEncoder.setMinRate(constants.rightEncoderMinRate);
         rightEncoder.setDistancePerPulse(constants.rightEncoderPulseDistance);
+
+        gearShiftSolenoid = new DoubleSolenoid(inputGearShiftForwardChannel, inputGearShiftReverseChannel);
+        shiftStatus = DoubleSolenoid.Value.kForward;
 
     }
 
@@ -70,6 +72,19 @@ public class DriveTrainSubsystem extends SubsystemBase{
         rightVictorSPX1.set(VictorSPXControlMode.PercentOutput, rightspeed);
         rightVictorSPX2.set(VictorSPXControlMode.PercentOutput, rightspeed);
         rightVictorSPX3.set(VictorSPXControlMode.PercentOutput, rightspeed);*/
+    }
+
+    public void swapShiftSolenoidPosition()
+    {
+        if(shiftStatus == DoubleSolenoid.Value.kForward)
+        {
+            shiftStatus = DoubleSolenoid.Value.kReverse;
+        }
+        else
+            {
+                shiftStatus = DoubleSolenoid.Value.kForward;
+            }
+        gearShiftSolenoid.set(shiftStatus);
     }
 
 }
