@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -28,7 +29,7 @@ public class Robot extends TimedRobot
     public void robotInit()
     {
         robotContainer = new RobotContainer();
-        driveTrainSubsystem = new DriveTrainSubsystem(constants.leftSparkChannel, constants.rightSparkChannel);
+        driveTrainSubsystem = new DriveTrainSubsystem(constants.leftSparkChannel, constants.rightSparkChannel, constants.gearShiftForwardChannel, constants.gearShiftReverseChannel);
         autonomousCommand = new DriveForDistanceCommand(driveTrainSubsystem, constants.inchesToDriveForDriveForDistanceCommand1);
         teleopCommand = new ManualDriveCommand(driveTrainSubsystem);
     }

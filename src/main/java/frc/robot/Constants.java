@@ -37,4 +37,8 @@ public final class Constants
     public final int leftJoystickPort = 0;
     public final int rightJoystickPort = 1;
 
+    //PCM Inputs
+    public final int gearShiftForwardChannel = 0;
+    public final int gearShiftReverseChannel = 1;
+
 }
