@@ -22,7 +22,6 @@ public class ManualDriveCommand extends CommandBase {
             driveTrainSubsystem.swapShiftSolenoidPosition();
         }
         driveTrainSubsystem.drive(RobotContainer.joystickLeft.getY(), RobotContainer.joystickRight.getY());
-        //MAKE SURE TO USE CORRECT RANGE OF INPUT VALUES.
     }
 
     @Override
