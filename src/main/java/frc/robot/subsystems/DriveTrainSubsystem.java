@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.commands.ManualDriveCommand;
 
 
 public class DriveTrainSubsystem extends SubsystemBase{
@@ -48,6 +49,8 @@ public class DriveTrainSubsystem extends SubsystemBase{
 
         gearShiftSolenoid = new DoubleSolenoid(inputGearShiftForwardChannel, inputGearShiftReverseChannel);
         shiftStatus = DoubleSolenoid.Value.kForward;
+        
+        setDefaultCommand(new ManualDriveCommand(this));
 
     }
 
