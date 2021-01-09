@@ -49,8 +49,6 @@ public class DriveTrainSubsystem extends SubsystemBase{
 
         gearShiftSolenoid = new DoubleSolenoid(inputGearShiftForwardChannel, inputGearShiftReverseChannel);
         shiftStatus = DoubleSolenoid.Value.kForward;
-        
-        setDefaultCommand(new ManualDriveCommand(this));
 
     }
 
