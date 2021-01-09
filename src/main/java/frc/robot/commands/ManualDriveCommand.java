@@ -17,7 +17,7 @@ public class ManualDriveCommand extends CommandBase {
     }
 
     public void execute() {
-        if(RobotContainer.joystickLeft.getTrigger() || RobotContainer.joystickRight.getTrigger())
+        if(RobotContainer.joystickLeft.getTriggerPressed() || RobotContainer.joystickRight.getTriggerPressed())
         {
             driveTrainSubsystem.swapShiftSolenoidPosition();
         }
