@@ -10,12 +10,10 @@ import java.util.Set;
 public class DriveForDistanceCommand extends CommandBase {
 
     private final DriveTrainSubsystem driveTrainSubsystem;
-    //private final Set<Subsystem> subsystems;
     private double inchesToDrive;
 
     public DriveForDistanceCommand(DriveTrainSubsystem driveTrainSubsystem, double inchesToDrive) {
         this.driveTrainSubsystem = driveTrainSubsystem;
-        //this.subsystems = Set.of(driveTrainSubsystem);
         this.inchesToDrive = inchesToDrive;
     }
 
