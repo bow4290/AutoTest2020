@@ -4,13 +4,18 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrainSubsystem;
-
-import java.util.Set;
+import frc.robot.Constants;
 
 public class DriveForDistanceCommand extends CommandBase {
 
+    Constants constants = new Constants();
+
     private final DriveTrainSubsystem driveTrainSubsystem;
     private double inchesToDrive;
+    private double straightnessError;
+    private double straightnessCorrection;
+    private double correctedLeftMotorSpeed;
+    private double correctedRightMotorSpeed;
 
     public DriveForDistanceCommand(DriveTrainSubsystem driveTrainSubsystem, double inchesToDrive) {
         this.driveTrainSubsystem = driveTrainSubsystem;
@@ -25,7 +30,25 @@ public class DriveForDistanceCommand extends CommandBase {
 
     @Override
     public void execute() {
-        driveTrainSubsystem.drive(0.4, 0.4);
+        straightnessError = driveTrainSubsystem.leftEncoder.getDistance() - driveTrainSubsystem.rightEncoder.getDistance();
+        straightnessCorrection = constants.kP*(straightnessError - constants.setpoint);
+        correctedLeftMotorSpeed = constants.autoSpeed - straightnessCorrection;
+        correctedRightMotorSpeed = constants.autoSpeed + straightnessCorrection;
+
+        if (correctedLeftMotorSpeed > 1){
+            correctedLeftMotorSpeed = 1;
+        }
+        if (correctedLeftMotorSpeed < -1){
+            correctedLeftMotorSpeed = -1;
+        }
+        if (correctedRightMotorSpeed > 1){
+            correctedRightMotorSpeed = 1;
+        }
+        if (correctedRightMotorSpeed < -1){
+            correctedRightMotorSpeed = -1;
+        }
+
+        driveTrainSubsystem.drive(-correctedLeftMotorSpeed, -correctedRightMotorSpeed);
     }
 
     @Override

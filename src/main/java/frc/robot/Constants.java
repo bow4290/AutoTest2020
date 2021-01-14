@@ -33,12 +33,17 @@ public final class Constants
     // Auto Command Inputs
     public final double inchesToDriveForDriveForDistanceCommand1 = 50;
 
-    //USB Ports
+    // USB Ports
     public final int leftJoystickPort = 0;
     public final int rightJoystickPort = 1;
 
-    //PCM Inputs
+    // PCM Inputs
     public final int gearShiftForwardChannel = 0;
     public final int gearShiftReverseChannel = 1;
+
+    // Drive Straight Constants
+    public final double autoSpeed = 0.7;
+    public final double kP = 0.05;
+    public final double setpoint = 0;
 
 }
