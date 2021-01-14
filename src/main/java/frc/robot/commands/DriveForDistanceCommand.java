@@ -25,12 +25,12 @@ public class DriveForDistanceCommand extends CommandBase {
 
     @Override
     public void execute() {
-        driveTrainSubsystem.drive(0.4, 0.4);
+        driveTrainSubsystem.drive(-0.6, -0.6);
     }
 
     @Override
     public boolean isFinished() {
-        return (driveTrainSubsystem.leftEncoder.getDistance() < inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() < inchesToDrive);
+        return (driveTrainSubsystem.leftEncoder.getDistance() > inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() > inchesToDrive);
     }
 
 

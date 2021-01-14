@@ -25,13 +25,13 @@ public final class Constants
     // Encoder Stuff
     public final int leftEncoderAverageSamples = 5;
     public final double leftEncoderMinRate = 1;
-    public final double leftEncoderPulseDistance = 1.0/7400 * Math.PI * wheelDiameter;
+    public final double leftEncoderPulseDistance = 1.0/10000 * Math.PI * wheelDiameter;
     public final int rightEncoderAverageSamples = 5;
     public final double rightEncoderMinRate = 1;
-    public final double rightEncoderPulseDistance = 1.0/7400 * Math.PI * wheelDiameter;
+    public final double rightEncoderPulseDistance = 1.0/10000 * Math.PI * wheelDiameter;
 
     // Auto Command Inputs
-    public final double inchesToDriveForDriveForDistanceCommand1 = 50;
+    public final double inchesToDriveForDriveForDistanceCommand1 = 120;
 
     //USB Ports
     public final int leftJoystickPort = 0;
