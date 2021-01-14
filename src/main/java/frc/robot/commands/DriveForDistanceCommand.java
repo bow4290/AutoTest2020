@@ -10,12 +10,10 @@ import java.util.Set;
 public class DriveForDistanceCommand extends CommandBase {
 
     private final DriveTrainSubsystem driveTrainSubsystem;
-    //private final Set<Subsystem> subsystems;
     private double inchesToDrive;
 
     public DriveForDistanceCommand(DriveTrainSubsystem driveTrainSubsystem, double inchesToDrive) {
         this.driveTrainSubsystem = driveTrainSubsystem;
-        //this.subsystems = Set.of(driveTrainSubsystem);
         this.inchesToDrive = inchesToDrive;
     }
 
@@ -27,14 +25,12 @@ public class DriveForDistanceCommand extends CommandBase {
 
     @Override
     public void execute() {
-        while(driveTrainSubsystem.leftEncoder.getDistance() < inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() < inchesToDrive) {
-            driveTrainSubsystem.drive(0.4, 0.4);
-        }
+        driveTrainSubsystem.drive(0.4, 0.4);
     }
 
     @Override
     public boolean isFinished() {
-        return true;
+        return (driveTrainSubsystem.leftEncoder.getDistance() < inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() < inchesToDrive);
     }
 
 
