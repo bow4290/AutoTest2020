@@ -53,7 +53,7 @@ public class DriveForDistanceCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        return (driveTrainSubsystem.leftEncoder.getDistance() < inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() < inchesToDrive);
+        return (driveTrainSubsystem.leftEncoder.getDistance() > inchesToDrive || driveTrainSubsystem.rightEncoder.getDistance() > inchesToDrive);
     }
 
 
