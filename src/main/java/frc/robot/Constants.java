@@ -25,25 +25,25 @@ public final class Constants
     // Encoder Stuff
     public final int leftEncoderAverageSamples = 5;
     public final double leftEncoderMinRate = 1;
-    public final double leftEncoderPulseDistance = 1.0/7400 * Math.PI * wheelDiameter;
+    public final double leftEncoderPulseDistance = 1.0/8800 * Math.PI * wheelDiameter;
     public final int rightEncoderAverageSamples = 5;
     public final double rightEncoderMinRate = 1;
-    public final double rightEncoderPulseDistance = 1.0/7400 * Math.PI * wheelDiameter;
+    public final double rightEncoderPulseDistance = 1.0/8800 * Math.PI * wheelDiameter;
 
     // Auto Command Inputs
-    public final double inchesToDriveForDriveForDistanceCommand1 = 50;
+    public final double inchesToDriveForDriveForDistanceCommand1 = 240;
 
     // USB Ports
-    public final int leftJoystickPort = 0;
-    public final int rightJoystickPort = 1;
+    public final int leftJoystickPort = 1;
+    public final int rightJoystickPort = 0;
 
     // PCM Inputs
     public final int gearShiftForwardChannel = 0;
     public final int gearShiftReverseChannel = 1;
 
     // Drive Straight Constants
-    public final double autoSpeed = 0.7;
-    public final double kP = 0.05;
+    public final double autoSpeed = 0.75;
+    public final double kP = 0.5;
     public final double setpoint = 0;
 
 }

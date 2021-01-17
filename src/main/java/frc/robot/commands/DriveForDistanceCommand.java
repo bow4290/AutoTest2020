@@ -32,20 +32,20 @@ public class DriveForDistanceCommand extends CommandBase {
     public void execute() {
         straightnessError = driveTrainSubsystem.leftEncoder.getDistance() - driveTrainSubsystem.rightEncoder.getDistance();
         straightnessCorrection = constants.kP*(straightnessError - constants.setpoint);
-        correctedLeftMotorSpeed = constants.autoSpeed - straightnessCorrection;
-        correctedRightMotorSpeed = constants.autoSpeed + straightnessCorrection;
+        correctedLeftMotorSpeed = constants.autoSpeed + straightnessCorrection;
+        correctedRightMotorSpeed = constants.autoSpeed - straightnessCorrection;
 
-        if (correctedLeftMotorSpeed > 1){
-            correctedLeftMotorSpeed = 1;
+        if (correctedLeftMotorSpeed > constants.autoSpeed){
+            correctedLeftMotorSpeed = constants.autoSpeed;
         }
-        if (correctedLeftMotorSpeed < -1){
-            correctedLeftMotorSpeed = -1;
+        if (correctedLeftMotorSpeed < -constants.autoSpeed){
+            correctedLeftMotorSpeed = -constants.autoSpeed;
         }
-        if (correctedRightMotorSpeed > 1){
-            correctedRightMotorSpeed = 1;
+        if (correctedRightMotorSpeed > constants.autoSpeed){
+            correctedRightMotorSpeed = constants.autoSpeed;
         }
-        if (correctedRightMotorSpeed < -1){
-            correctedRightMotorSpeed = -1;
+        if (correctedRightMotorSpeed < -constants.autoSpeed){
+            correctedRightMotorSpeed = -constants.autoSpeed;
         }
 
         driveTrainSubsystem.drive(-correctedLeftMotorSpeed, -correctedRightMotorSpeed);
