@@ -61,8 +61,8 @@ public class DriveTrainSubsystem extends SubsystemBase{
             rightspeed = 0;
         }
 
-        //leftSpark.setInverted(true);
-        rightSpark.setInverted(false);
+        leftSpark.setInverted(false);
+        rightSpark.setInverted(true);
 
         leftSpark.setSpeed(leftspeed);
         rightSpark.setSpeed(rightspeed);
